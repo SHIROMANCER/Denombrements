@@ -8,6 +8,12 @@ namespace Denombrements
 {
     class Program
     {
+        static long Calcul(long num, int fois)
+        {
+            for (int k = 1; k <= fois; k++)
+                num *= fois;
+            return num;
+        }
         static void Main(string[] args)
         {
             int c = 1;
@@ -28,9 +34,7 @@ namespace Denombrements
                     int n = int.Parse(Console.ReadLine()); // saisir le nombre
                                                            // calcul de r
                     long r = 1;
-                    for (int k = 1; k <= n; k++)
-                        r *= k;
-                    Console.WriteLine(n + "! = " + r);
+                    Console.WriteLine(n + "! = " + Calcul(r, n));
                 }
                 else
                 {
@@ -42,10 +46,9 @@ namespace Denombrements
                         int n = int.Parse(Console.ReadLine()); // saisir le nombre
                         // calcul de r
                         long r = 1;
-                        for (int k = (t - n + 1); k <= t; k++)
-                            r *= k;
+                        int f = t - n + 1;
                         //Console.WriteLine("résultat = " + (r1 / r2));
-                        Console.WriteLine("A(" + t + "/" + n + ") = " + r);
+                        Console.WriteLine("A(" + t + "/" + n + ") = " + Calcul(r, f));
                     }
                     else
                     {
@@ -55,15 +58,10 @@ namespace Denombrements
                         int n = int.Parse(Console.ReadLine()); // saisir le nombre
                         // calcul de r1
                         long r1 = 1;
-                        for (int k = (t - n + 1); k <= t; k++)
-                            r1 *= k;
-                        // calcul de r2
-                        long r2 = 1;
-                        for (int k = 1; k <= n; k++)
-                            r2 *= k;
+                        int f = t - n + 1;
                         // calcul de r3
                         //Console.WriteLine("résultat = " + (r1 / r2));
-                        Console.WriteLine("C(" + t + "/" + n + ") = " + (r1 / r2));
+                        Console.WriteLine("C(" + t + "/" + n + ") = " + Calcul(r1, f) / Calcul(r1, n));
                     }
                 }
             }
